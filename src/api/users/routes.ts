@@ -6,6 +6,7 @@ const router = Router();
 const userController = new UsersController(new UserRepository);
 
 router.get('/', userController.getUsers.bind(userController));
+router.get('/:identificationNumber', userController.getUserById.bind(userController));
 //router.post('/', postUsers);
 //router.put('/', putUsers);
 //router.delete('/', deleteUsers);

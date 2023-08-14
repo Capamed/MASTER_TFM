@@ -19,8 +19,23 @@ export class UserRepository implements DatabaseRepository<Users>{
             },
         });
     }
-    getById(id: Id, query?: Query | undefined): Promise<Users> {
-        throw new Error("Method not implemented.");
+    async getById(id: Id, query?: Query | undefined): Promise<Users> {
+        const repository = database.getRepository(Users);
+        const user = repository.findOne({
+            where: {
+                identificationNumber: id as any
+            },
+            relations: {
+                consultationsUsers: {
+                    doctor: true,
+                    medication: true
+                },
+            }
+        });
+        if (!user) {
+            throw new NotFound("User does not exist");
+        }
+        return user as any;
     }
     updateById(id: Id, data: Users, query?: Query | undefined): Promise<Users> {
         throw new Error("Method not implemented.");
