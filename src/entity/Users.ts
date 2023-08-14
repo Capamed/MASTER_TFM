@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { Consultations } from "./Consultations";
 
 @Entity({ name: "USERS" })
 export class Users {
@@ -41,4 +42,7 @@ export class Users {
 
     @Column({ name: "photo", type: "blob" })
     photo!: Buffer;
+
+    @OneToMany(() => Consultations, (consultation) => consultation.user) // note: we will create author property in the Photo class below
+    consultationsUsers!: Consultations[]
 }
