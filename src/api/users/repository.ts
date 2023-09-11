@@ -5,6 +5,19 @@ import database from "../../config/database";
 
 
 export class UserRepository implements DatabaseRepository<Users>{
+    validateUser(username: String, password: String): Promise<Users> {
+        const repository = database.getRepository(Users);
+        const user = repository.findOne({
+            where: {
+                username: username as any,
+                password: password as any
+            }
+        });
+        if (!user) {
+            throw new NotFound("User does not exist");
+        }
+        return user as any;
+    }
     create(data: Partial<Users>, query?: Query | undefined): Promise<Users> {
         throw new Error("Method not implemented.");
     }

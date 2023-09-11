@@ -27,4 +27,22 @@ export class UsersController {
             next(error);
         }
     }
+
+    async validateUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { username,password } = req.body;
+            console.log(username,password);
+            
+            const user = await this.repository.validateUser(username,password);
+            if(user){
+                res.status(200).json({user:user});
+            }else{
+                res.status(200).json({user:null});
+            }
+
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
 }
