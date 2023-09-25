@@ -40,8 +40,8 @@ export class Users {
     @Column({ name: "PASSWORD" })
     password!: string;
 
-    @Column({ name: "photo", type: "blob" })
-    photo!: Buffer;
+    @Column({ name: "PHOTO"})
+    photo!: string;
 
     @OneToMany(() => Consultations, (consultation) => consultation.user) // note: we will create author property in the Photo class below
     consultationsUsers!: Consultations[]

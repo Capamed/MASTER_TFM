@@ -5,7 +5,7 @@ import { Consultations } from "./Consultations";
 export class Medications {
 
     @PrimaryGeneratedColumn({ name: "MEDICATION_ID" })
-    medicationId!: string;
+    medicationId!: number;
 
     @Column({ name: "NAME" })   
     nameMedication!: string;
@@ -13,8 +13,11 @@ export class Medications {
     @Column({ name: "AMOUNT" })   
     amount!: string;
 
-    @Column({ name: "photo", type: "blob" })
+    @Column({ name: "PHOTO"})
     photo!: Buffer;
+    
+    @Column({ name: "ID_VUFORIA"})
+    idVuforia!: Buffer;
 
     @OneToMany(() => Consultations, (consultation) => consultation.medication) // note: we will create author property in the Photo class below
     consultationsMedications!: Consultations[]
