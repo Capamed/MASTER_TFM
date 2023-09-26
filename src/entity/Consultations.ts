@@ -28,5 +28,8 @@ export class Consultations {
     observation!: number;
 
     @Column({ name: "SYMBOL" })
-    symbol!: number;
+    symbol!: string;
+
+    @Column({ name: "STATUS" })
+    status!: string;
 }

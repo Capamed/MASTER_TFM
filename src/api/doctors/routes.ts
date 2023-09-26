@@ -3,8 +3,8 @@ import { DoctorsController } from "./controller";
 import { DoctorRepository } from "./repository";
 
 const router = Router();
-const userController = new DoctorsController(new DoctorRepository);
+const doctorController = new DoctorsController(new DoctorRepository);
 
-router.get('/', userController.getDoctors.bind(userController));
+router.get('/', doctorController.getDoctors.bind(doctorController));
 
 export default router;
