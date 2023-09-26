@@ -32,4 +32,7 @@ export class Consultations {
 
     @Column({ name: "STATUS" })
     status!: string;
+
+    @Column({ name: "IDENTIFICATION_NUMBER_USER" })
+    identificationNumberUser!: string;
 }

@@ -3,8 +3,18 @@ import { Consultations } from "../../entity/Consultations";
 import database from "../../config/database";
 
 
-
 export class ConsultationRepository implements DatabaseRepository<Consultations>{
+    async listById(id: Id, query?: Query | undefined): Promise<Consultations[]> {
+        const repository = database.getRepository(Consultations);
+        return repository.find({
+            where: {
+                identificationNumberUser: id as any
+            },relations:{
+               medication:true,
+               doctor:true
+            }
+        });
+    }
     getByIdWithoutRelations(id: Id, query?: Query | undefined): Promise<Consultations> {
         throw new Error("Method not implemented.");
     }
@@ -24,7 +34,7 @@ export class ConsultationRepository implements DatabaseRepository<Consultations>
         const repository = database.getRepository(Consultations);
         return repository.find();
     }
-  
+
     updateById(id: Id, data: Consultations, query?: Query | undefined): Promise<Consultations> {
         throw new Error("Method not implemented.");
     }

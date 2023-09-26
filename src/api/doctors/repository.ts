@@ -5,6 +5,9 @@ import { NotFound } from "http-errors";
 
 
 export class DoctorRepository implements DatabaseRepository<Doctors>{
+    listById(id: Id, query?: Query | undefined): Promise<Doctors[]> {
+        throw new Error("Method not implemented.");
+    }
     getByIdWithoutRelations(id: Id, query?: Query | undefined): Promise<Doctors> {
         throw new Error("Method not implemented.");
     }

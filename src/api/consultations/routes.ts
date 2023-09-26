@@ -10,5 +10,6 @@ const router = Router();
 const consultationController = new ConsultationsController(new ConsultationRepository, new DoctorRepository, new UserRepository, new MedicationRepository);
 
 router.post('/', consultationController.createConsultation.bind(consultationController));
+router.get('/:identificationNumber', consultationController.getConsultationsById.bind(consultationController));
 
 export default router;

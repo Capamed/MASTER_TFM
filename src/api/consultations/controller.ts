@@ -37,4 +37,17 @@ export class ConsultationsController {
             next(error);
         }
     }
+
+
+    async getConsultationsById(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { identificationNumber } = req.params;
+            const getConsultations = await this.repository.listById(identificationNumber);
+            res.status(200).json(getConsultations);
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
+
 }
