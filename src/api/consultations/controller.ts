@@ -50,4 +50,20 @@ export class ConsultationsController {
         }
     }
 
+    async updateInformationConsultations(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { consultationId } = req.params;
+            const objUpdateConsultations = req.body;
+            const objConsultations = new Consultations();
+            objConsultations.consultationId = parseInt(consultationId);
+            objConsultations.schedule = objUpdateConsultations.schedule;
+            objConsultations.observation = objUpdateConsultations.observation;
+            const getConsultations = await this.repository.updateById(consultationId, objConsultations);
+            res.status(200).json(getConsultations);
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
+
 }
