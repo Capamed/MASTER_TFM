@@ -56,7 +56,7 @@ export class UserRepository implements DatabaseRepository<Users>{
     updateById(id: Id, data: Users, query?: Query | undefined): Promise<Users> {
         throw new Error("Method not implemented.");
     }
-    deleteById(id: Id, query?: Query | undefined): Promise<Users> {
+    deleteById(id: Id, query?: Query | undefined) {
         throw new Error("Method not implemented.");
     }
     async getByIdWithoutRelations(id: Id, query?: Query | undefined): Promise<Users> {

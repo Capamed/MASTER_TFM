@@ -12,5 +12,6 @@ const consultationController = new ConsultationsController(new ConsultationRepos
 router.post('/', consultationController.createConsultation.bind(consultationController));
 router.get('/:identificationNumber', consultationController.getConsultationsById.bind(consultationController));
 router.patch('/:consultationId', consultationController.updateInformationConsultations.bind(consultationController));
+router.delete('/:consultationId', consultationController.deleteOneConsultationById.bind(consultationController));
 
 export default router;

@@ -38,7 +38,7 @@ export class MedicationRepository implements DatabaseRepository<Medications>{
     updateById(id: Id, data: Medications, query?: Query | undefined): Promise<Medications> {
         throw new Error("Method not implemented.");
     }
-    deleteById(id: Id, query?: Query | undefined): Promise<Medications> {
+    deleteById(id: Id, query?: Query | undefined) {
         throw new Error("Method not implemented.");
     }
 }

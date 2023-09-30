@@ -39,7 +39,7 @@ export class DoctorRepository implements DatabaseRepository<Doctors>{
     updateById(id: Id, data: Doctors, query?: Query | undefined): Promise<Doctors> {
         throw new Error("Method not implemented.");
     }
-    deleteById(id: Id, query?: Query | undefined): Promise<Doctors> {
+    deleteById(id: Id, query?: Query | undefined) {
         throw new Error("Method not implemented.");
     }
 }

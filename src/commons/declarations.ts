@@ -6,7 +6,7 @@ export interface DatabaseRepository<T> {
     list(query?: Query): Promise<T[]>;
     getById(id: Id, query?: Query): Promise<T>;
     updateById(id: Id, data: T, query?: Query): Promise<T>;
-    deleteById(id: Id, query?: Query): Promise<T>;
+    deleteById(id: Id, query?: Query): void;
     validateUser(username: String, password: String): Promise<T>;
     listById(id: Id, query?: Query): Promise<T[]>;
 } 

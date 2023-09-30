@@ -48,7 +48,9 @@ export class ConsultationRepository implements DatabaseRepository<Consultations>
         await repository.update(id, data);
         return data;
     }
-    deleteById(id: Id, query?: Query | undefined): Promise<Consultations> {
-        throw new Error("Method not implemented.");
+
+    async deleteById(id: Id, query?: Query | undefined) {
+        const repository = database.getRepository(Consultations);
+        await repository.delete(id);
     }
 }

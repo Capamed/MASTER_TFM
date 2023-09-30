@@ -29,9 +29,9 @@ export class ConsultationsController {
             objConsultations.observation = req.body.observation;
             objConsultations.schedule = req.body.schedule;
             objConsultations.symbol = req.body.symbol;
-            objConsultations.status = '0';
+            objConsultations.status = '1';
             const consultation = await this.repository.create(objConsultations);
-            res.status(200).json(consultation);
+            res.status(200).json(consultation.consultationId);
         } catch (error) {
             res.status(500).json({ error: "Internal Server Error" });
             next(error);
@@ -58,6 +58,7 @@ export class ConsultationsController {
             objConsultations.consultationId = parseInt(consultationId);
             objConsultations.schedule = objUpdateConsultations.schedule;
             objConsultations.observation = objUpdateConsultations.observation;
+            objConsultations.status = '1';
             const getConsultations = await this.repository.updateById(consultationId, objConsultations);
             res.status(200).json(getConsultations);
         } catch (error) {
@@ -66,4 +67,14 @@ export class ConsultationsController {
         }
     }
 
+    async deleteOneConsultationById(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { consultationId } = req.params;
+            await this.repository.deleteById(consultationId);
+            res.status(200).json('true');
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
 }
