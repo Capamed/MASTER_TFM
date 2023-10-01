@@ -15,4 +15,17 @@ export class MedicationsController {
             next(error);
         }
     }
+
+    async getMedicationsByidVuforia(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { idVuforia } = req.params;
+            const medication = await this.repository.getByIdWithoutRelations(idVuforia);
+
+            res.status(200).json(medication);
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
+
 }

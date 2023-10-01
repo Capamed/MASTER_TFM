@@ -7,8 +7,18 @@ export class MedicationRepository implements DatabaseRepository<Medications>{
     listById(id: Id, query?: Query | undefined): Promise<Medications[]> {
         throw new Error("Method not implemented.");
     }
-    getByIdWithoutRelations(id: Id, query?: Query | undefined): Promise<Medications> {
-        throw new Error("Method not implemented.");
+
+    async getByIdWithoutRelations(id: Id, query?: Query | undefined): Promise<Medications> {
+
+        const repository = database.getRepository(Medications);
+        const consultationByIdVuforia = repository.findOneBy({
+            idVuforia: id as any
+        })
+
+        if (!consultationByIdVuforia) {
+            throw new NotFound("Medication does not exist");
+        }
+        return consultationByIdVuforia as any;
     }
     async getById(id: Id, query?: Query | undefined): Promise<Medications> {
         const repository = database.getRepository(Medications);
@@ -34,7 +44,7 @@ export class MedicationRepository implements DatabaseRepository<Medications>{
         const repository = database.getRepository(Medications);
         return repository.find();
     }
-  
+
     updateById(id: Id, data: Medications, query?: Query | undefined): Promise<Medications> {
         throw new Error("Method not implemented.");
     }
