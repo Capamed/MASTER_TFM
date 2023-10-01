@@ -41,6 +41,7 @@ export class ConsultationsController {
 
     async getConsultationsById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
+            console.log('quia');
             const { identificationNumber } = req.params;
             const getConsultations = await this.repository.listById(identificationNumber);
             res.status(200).json(getConsultations);
@@ -72,6 +73,22 @@ export class ConsultationsController {
             const { consultationId } = req.params;
             await this.repository.deleteById(consultationId);
             res.status(200).json('true');
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
+
+    async updateStateConsultation(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            console.log('sdsdf');
+            const { consultationId } = req.params;
+            console.log('sdsdf',consultationId);
+            const objConsultations = new Consultations();
+            objConsultations.consultationId = parseInt(consultationId);
+            objConsultations.status = '0';
+            const getConsultations = await this.repository.updateById(consultationId, objConsultations);
+            res.status(200).json(getConsultations);
         } catch (error) {
             res.status(500).json({ error: "Internal Server Error" });
             next(error);

@@ -13,5 +13,5 @@ router.post('/', consultationController.createConsultation.bind(consultationCont
 router.get('/:identificationNumber', consultationController.getConsultationsById.bind(consultationController));
 router.patch('/:consultationId', consultationController.updateInformationConsultations.bind(consultationController));
 router.delete('/:consultationId', consultationController.deleteOneConsultationById.bind(consultationController));
-
+router.get('/updateState/:consultationId', consultationController.updateStateConsultation.bind(consultationController));
 export default router;
