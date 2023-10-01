@@ -5,6 +5,9 @@ import database from "../../config/database";
 
 
 export class UserRepository implements DatabaseRepository<Users>{
+    getOneRegisterByTwoConditions(id: String, medication: number): Promise<Users> {
+        throw new Error("Method not implemented.");
+    }
     listById(id: Id, query?: Query | undefined): Promise<Users[]> {
         throw new Error("Method not implemented.");
     }

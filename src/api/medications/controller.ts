@@ -8,6 +8,7 @@ export class MedicationsController {
 
     async getMedications(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
+            console.log('otra');
             const getMedications = await this.repository.list();
             res.status(200).json(getMedications);
         } catch (error) {
@@ -18,8 +19,10 @@ export class MedicationsController {
 
     async getMedicationsByidVuforia(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { idVuforia } = req.params;
-            const medication = await this.repository.getByIdWithoutRelations(idVuforia);
+            const { nameMedication } = req.params;
+            console.log("entro",nameMedication);
+            
+            const medication = await this.repository.getByIdWithoutRelations(nameMedication);
 
             res.status(200).json(medication);
         } catch (error) {

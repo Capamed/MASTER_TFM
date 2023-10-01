@@ -35,4 +35,7 @@ export class Consultations {
 
     @Column({ name: "IDENTIFICATION_NUMBER_USER" })
     identificationNumberUser!: string;
+
+     @Column({ name: "MEDICATION_ID" })
+    medicationId!: number;
 }

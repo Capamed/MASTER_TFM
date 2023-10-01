@@ -14,4 +14,5 @@ router.get('/:identificationNumber', consultationController.getConsultationsById
 router.patch('/:consultationId', consultationController.updateInformationConsultations.bind(consultationController));
 router.delete('/:consultationId', consultationController.deleteOneConsultationById.bind(consultationController));
 router.get('/updateState/:consultationId', consultationController.updateStateConsultation.bind(consultationController));
+router.get('/getOneRegister/consultation', consultationController.getConsultationByIdAndMedication.bind(consultationController));
 export default router;

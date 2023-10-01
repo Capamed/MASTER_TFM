@@ -41,9 +41,22 @@ export class ConsultationsController {
 
     async getConsultationsById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            console.log('quia');
             const { identificationNumber } = req.params;
             const getConsultations = await this.repository.listById(identificationNumber);
+            res.status(200).json(getConsultations);
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
+
+    async getConsultationByIdAndMedication(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const queryParams: any = req.query;
+            const id = queryParams.identificationNumber;
+            const medication = queryParams.medication;
+            console.log(queryParams);
+            const getConsultations = await this.repository.getOneRegisterByTwoConditions(id,medication);
             res.status(200).json(getConsultations);
         } catch (error) {
             res.status(500).json({ error: "Internal Server Error" });
@@ -81,9 +94,7 @@ export class ConsultationsController {
 
     async updateStateConsultation(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            console.log('sdsdf');
             const { consultationId } = req.params;
-            console.log('sdsdf',consultationId);
             const objConsultations = new Consultations();
             objConsultations.consultationId = parseInt(consultationId);
             objConsultations.status = '0';

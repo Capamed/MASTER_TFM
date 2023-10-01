@@ -9,4 +9,5 @@ export interface DatabaseRepository<T> {
     deleteById(id: Id, query?: Query): void;
     validateUser(username: String, password: String): Promise<T>;
     listById(id: Id, query?: Query): Promise<T[]>;
+    getOneRegisterByTwoConditions(id: String, medication: number): Promise<T>;
 } 
