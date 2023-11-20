@@ -28,12 +28,12 @@ export class ConsultationsController {
 
             objConsultations.observation = req.body.observation;
             objConsultations.schedule = req.body.schedule;
-            objConsultations.symbol = req.body.symbol;
+            objConsultations.symbol = 'H';
             objConsultations.status = '1';
             const consultation = await this.repository.create(objConsultations);
-            res.status(200).json(consultation.consultationId);
+            res.status(200).json({code:200,data:consultation.consultationId});
         } catch (error) {
-            res.status(500).json({ error: "Internal Server Error" });
+            res.status(500).json({code:500,data:"Internal Server Error"});
             next(error);
         }
     }

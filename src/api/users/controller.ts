@@ -34,10 +34,11 @@ export class UsersController {
             console.log(username,password);
             
             const user = await this.repository.validateUser(username,password);
+            console.log(user);
             if(user){
-                res.status(200).json({user:user});
+                res.status(200).json({code:200,data:user.identificationNumber});
             }else{
-                res.status(200).json({user:null});
+                res.status(200).json({code:500,data:null});
             }
 
         } catch (error) {
