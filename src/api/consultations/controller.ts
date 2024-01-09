@@ -74,7 +74,7 @@ export class ConsultationsController {
             objConsultations.observation = objUpdateConsultations.observation;
             objConsultations.status = '1';
             const getConsultations = await this.repository.updateById(consultationId, objConsultations);
-            res.status(200).json(getConsultations);
+            res.status(200).json({code:200,data:"true"});
         } catch (error) {
             res.status(500).json({ error: "Internal Server Error" });
             next(error);
@@ -85,7 +85,7 @@ export class ConsultationsController {
         try {
             const { consultationId } = req.params;
             await this.repository.deleteById(consultationId);
-            res.status(200).json('true');
+            res.status(200).json({code:200,data:"true"});
         } catch (error) {
             res.status(500).json({ error: "Internal Server Error" });
             next(error);

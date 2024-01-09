@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Configurar opciones CORS
 const corsOptions = {
-    origin: 'http://localhost:64617', // Reemplaza con el origen de tu aplicación web
+    origin: 'http://localhost:56668', // Reemplaza con el origen de tu aplicación web
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Habilitar el uso de credenciales (cookies, autenticación, etc.)
     optionsSuccessStatus: 204, // Establecer el código de estado para respuestas OPTIONS
