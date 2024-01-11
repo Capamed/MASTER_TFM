@@ -105,4 +105,17 @@ export class ConsultationsController {
             next(error);
         }
     }
+
+    async updateStateConsultationByState(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const objUpdateConsultations = req.body;
+            console.log(objUpdateConsultations);
+            
+            const getConsultations = await this.repository.updateStateByState(objUpdateConsultations);
+            res.status(200).json({code:200,data:"true"});
+        } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+            next(error);
+        }
+    }
 }

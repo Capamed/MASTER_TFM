@@ -5,6 +5,17 @@ import { NotFound } from "http-errors";
 
 
 export class ConsultationRepository implements DatabaseRepository<Consultations>{
+    updateStateByState(data:any, query?: Query | undefined): Promise<Consultations> {
+        const repository = database.getRepository(Consultations);
+        let state = data.state
+        let numberIdentification = data.numberIdentification;
+        const consultation = repository.query(`UPDATE CONSULTATIONS SET STATUS = "${state}" WHERE IDENTIFICATION_NUMBER_USER="${numberIdentification}"`)
+        if (!consultation) {
+            throw new NotFound("Consultarion does not exist");
+        }
+        
+        return consultation as any;
+    }
     async getOneRegisterByTwoConditions(id: String, medication: number): Promise<Consultations> {
         const repository = database.getRepository(Consultations);
         const consultation = repository.findOne({

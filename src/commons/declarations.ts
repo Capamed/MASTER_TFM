@@ -10,4 +10,5 @@ export interface DatabaseRepository<T> {
     validateUser(username: String, password: String): Promise<T>;
     listById(id: Id, query?: Query): Promise<T[]>;
     getOneRegisterByTwoConditions(id: String, medication: number): Promise<T>;
+    updateStateByState(data: T, query?: Query): Promise<T>;
 } 

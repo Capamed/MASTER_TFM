@@ -4,6 +4,9 @@ import database from "../../config/database";
 import { NotFound } from "http-errors";
 
 export class MedicationRepository implements DatabaseRepository<Medications>{
+    updateStateByState(data: Medications, query?: Query | undefined): Promise<Medications> {
+        throw new Error("Method not implemented.");
+    }
     getOneRegisterByTwoConditions(id: String, medication: number): Promise<Medications> {
         throw new Error("Method not implemented.");
     }

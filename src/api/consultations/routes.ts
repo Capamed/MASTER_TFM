@@ -15,4 +15,5 @@ router.post('/edit/:consultationId', consultationController.updateInformationCon
 router.delete('/:consultationId', consultationController.deleteOneConsultationById.bind(consultationController));
 router.get('/updateState/:consultationId', consultationController.updateStateConsultation.bind(consultationController));
 router.get('/getOneRegister/consultation', consultationController.getConsultationByIdAndMedication.bind(consultationController));
+router.get('/updateStateByState/state/id', consultationController.updateStateConsultationByState.bind(consultationController));
 export default router;
