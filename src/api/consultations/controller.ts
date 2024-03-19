@@ -28,6 +28,8 @@ export class ConsultationsController {
 
             objConsultations.observation = req.body.observation;
             objConsultations.schedule = req.body.schedule;
+            objConsultations.startDate = req.body.startDate;
+            objConsultations.finalDate = req.body.finalDate;
             objConsultations.symbol = 'H';
             objConsultations.status = '1';
             const consultation = await this.repository.create(objConsultations);
@@ -72,6 +74,8 @@ export class ConsultationsController {
             objConsultations.consultationId = parseInt(consultationId);
             objConsultations.schedule = objUpdateConsultations.schedule;
             objConsultations.observation = objUpdateConsultations.observation;
+            objConsultations.startDate = objUpdateConsultations.startDate;
+            objConsultations.finalDate = objUpdateConsultations.finalDate;
             objConsultations.status = '1';
             const getConsultations = await this.repository.updateById(consultationId, objConsultations);
             res.status(200).json({code:200,data:"true"});

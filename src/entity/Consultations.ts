@@ -33,6 +33,12 @@ export class Consultations {
     @Column({ name: "STATUS" })
     status!: string;
 
+    @Column({ name: "START_DATE" })
+    startDate!: string;
+
+    @Column({ name: "FINAL_DATE" })
+    finalDate!: string;
+
     @Column({ name: "IDENTIFICATION_NUMBER_USER" })
     identificationNumberUser!: string;
 
